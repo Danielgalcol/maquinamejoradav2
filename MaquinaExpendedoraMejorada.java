@@ -84,6 +84,7 @@ public class MaquinaExpendedoraMejorada {
      * Imprime un billete para el cliente actual
      */
     public void imprimirBillete() {
+        
         if(billetesVendidos >= billetesDisponibles){
             System.out.println("Lo sentimos ya se han vendido todos los billetes.");
         }
@@ -117,7 +118,6 @@ public class MaquinaExpendedoraMejorada {
                     System.out.println("# Billete de tren:");
                     System.out.println("# De " + estacionOrigen + " a " + estacionDestino);
                     System.out.println("# " + precioBillete + " euros.");
-                    System.out.println("#Enhorabuena querido cliente usted se ha ganado un descuento de " + (precioBillete*0.1) +  "$ para comprar en el Carrefour");
                     System.out.println("##################");
                     System.out.println();         
 
@@ -126,6 +126,10 @@ public class MaquinaExpendedoraMejorada {
                     // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
                     balanceClienteActual = balanceClienteActual - precioBillete;
                     billetesVendidos++;
+                    if(billetesVendidos > 0 && billetesVendidos %3 == 0){
+                        System.out.println("#Enhorabuena querido cliente usted se ha ganado un descuento de " + (precioBillete*0.1) +  "$ para comprar en el Carrefour");
+                        
+                    }
                 }
                 else {
                     System.out.println("Necesitas introducir " + (precioBillete - balanceClienteActual) + " euros mas!");
